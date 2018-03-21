@@ -1,0 +1,13 @@
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\bin\Release\instaSQL.exe.config
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\bin\Release\instaSQL.exe
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\bin\Release\instaSQL.pdb
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Release\instaSQL.Form1.resources
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Release\instaSQL.Properties.Resources.resources
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Release\instaSQL.csproj.GenerateResource.Cache
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Release\instaSQL.csproj.CoreCompileInputs.cache
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Release\instaSQL.exe
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Release\instaSQL.pdb
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Release\instaSQL.csprojResolveAssemblyReference.cache
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\bin\Release\MySql.Data.dll
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\bin\Release\MySql.Data.xml
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Release\instaSQL.csproj.CopyComplete

@@ -1,0 +1,10 @@
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\bin\Debug\instaSQL.exe.config
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\bin\Debug\instaSQL.exe
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\bin\Debug\instaSQL.pdb
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Debug\instaSQL.csprojResolveAssemblyReference.cache
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Debug\instaSQL.Form1.resources
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Debug\instaSQL.Properties.Resources.resources
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Debug\instaSQL.csproj.GenerateResource.Cache
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Debug\instaSQL.csproj.CoreCompileInputs.cache
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Debug\instaSQL.exe
+C:\Users\Sourcerer\source\repos\instaSQL\instaSQL\obj\Debug\instaSQL.pdb
