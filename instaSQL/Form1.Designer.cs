@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("SQL Server");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("SQL Server");
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -71,6 +71,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -79,6 +83,7 @@
             this.splitContainer1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -213,6 +218,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.panel8);
             this.panel3.Controls.Add(this.splitContainer1);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.treeView1);
@@ -298,7 +304,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(46, 121);
+            this.label15.Location = new System.Drawing.Point(46, 113);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(59, 22);
             this.label15.TabIndex = 14;
@@ -309,7 +315,7 @@
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(8, 114);
+            this.button4.Location = new System.Drawing.Point(8, 106);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(32, 32);
             this.button4.TabIndex = 13;
@@ -329,7 +335,7 @@
             // 
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(1, 179);
+            this.richTextBox1.Location = new System.Drawing.Point(1, 164);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(199, 78);
             this.richTextBox1.TabIndex = 11;
@@ -340,7 +346,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(2, 154);
+            this.label18.Location = new System.Drawing.Point(2, 139);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(95, 22);
             this.label18.TabIndex = 10;
@@ -350,7 +356,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(44, 80);
+            this.label17.Location = new System.Drawing.Point(44, 72);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(68, 22);
             this.label17.TabIndex = 9;
@@ -363,7 +369,7 @@
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(6, 76);
+            this.button3.Location = new System.Drawing.Point(6, 68);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(32, 32);
             this.button3.TabIndex = 8;
@@ -496,10 +502,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode2.Name = "Node0";
-            treeNode2.Text = "SQL Server";
+            treeNode15.Name = "Node0";
+            treeNode15.Text = "SQL Server";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode15});
             this.treeView1.Size = new System.Drawing.Size(184, 535);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -559,6 +565,48 @@
             this.label10.TabIndex = 5;
             this.label10.Text = "Welcome";
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.button8);
+            this.panel8.Controls.Add(this.textBox7);
+            this.panel8.Controls.Add(this.label23);
+            this.panel8.Location = new System.Drawing.Point(185, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(602, 42);
+            this.panel8.TabIndex = 6;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(10, 10);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(119, 22);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "Custom Query";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(130, 7);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(354, 29);
+            this.textBox7.TabIndex = 1;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.White;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(487, 6);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(113, 31);
+            this.button8.TabIndex = 2;
+            this.button8.Text = "Run Query";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -584,6 +632,8 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -630,6 +680,10 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label23;
     }
 }
 

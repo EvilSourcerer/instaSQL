@@ -138,6 +138,9 @@ namespace instaSQL
                 }
                 else if (File.ReadAllText("Theme_Pref") == "dark")
                 {
+                    label23.ForeColor = Color.White;
+                    button8.BackColor = Color.FromArgb(51, 51, 55);
+                    button8.ForeColor = Color.White;
                     textBox3.ForeColor = Color.White;
                     button5.BackColor = Color.FromArgb(51, 51, 55);
                     label20.ForeColor = Color.White;
@@ -371,8 +374,8 @@ namespace instaSQL
                 listView1.Clear();
                 listView1.View = View.List;
                 listView1.Parent = panel3;
-                listView1.Size = new Size(panel3.Width - treeView1.Width - splitContainer1.Width, panel3.Height);
-                listView1.Location = new Point(182, 0);
+                listView1.Size = new Size(panel3.Width - treeView1.Width - splitContainer1.Width, panel3.Height-panel8.Height);
+                listView1.Location = new Point(182, 41);
                 listView1.Font = new Font("Open Sans", 16);
                 for (int i = 0; i < treeView1.Nodes[0].Nodes.Count; i++)
                 {
@@ -389,8 +392,8 @@ namespace instaSQL
                 listView3.Clear();
                 listView3.View = View.List;
                 listView3.Parent = panel3;
-                listView3.Size = new Size(panel3.Width - treeView1.Width - splitContainer1.Width, panel3.Height);
-                listView3.Location = new Point(182, 0);
+                listView3.Size = new Size(panel3.Width - treeView1.Width - splitContainer1.Width, panel3.Height-panel8.Height);
+                listView3.Location = new Point(182, 41);
                 listView3.Font = new Font("Open Sans", 16);
                 for (int i = 0; i < e.Node.Nodes.Count; i++)
                 {
@@ -831,6 +834,27 @@ namespace instaSQL
             }
             reader_.Close();
             treeView1.SelectedNode.Nodes.Add(textBox3.Text);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlCommand customcommand_ = dbconnect.CreateCommand();
+                customcommand_.CommandText = textBox7.Text;
+                MySqlDataReader reader_;
+                reader_ = customcommand_.ExecuteReader();
+                while (reader_.Read())
+                {
+
+                }
+                reader_.Close();
+                button6_Click(sender, null);
+            }
+            catch(MySqlException err_)
+            {
+                MessageBox.Show(err_.Message);
+            }
         }
     }
 }
