@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("SQL Server");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("SQL Server");
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -502,10 +502,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode15.Name = "Node0";
-            treeNode15.Text = "SQL Server";
+            treeNode17.Name = "Node0";
+            treeNode17.Text = "SQL Server";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode15});
+            treeNode17});
             this.treeView1.Size = new System.Drawing.Size(184, 535);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);

@@ -23,7 +23,7 @@ namespace instaSQL
             button5.Click += Button5_Click;
 
         }
-
+        public string originaltablename_ = "";
         public List<string> column_names_ = new List<string>();
         public List<string> column_datatype_ = new List<string>();
         public Label label26 = new Label();
@@ -400,11 +400,23 @@ namespace instaSQL
                     listView3.Items.Add(e.Node.Nodes[i].Name);
                 }
                 listView3.LabelEdit = true;
+                listView3.MouseDoubleClick += ListView3_MouseDoubleClick;
             }
         }
+
+        private void ListView3_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listView3.SelectedItems.Count != 0)
+            {
+                ListViewItem selecteditem_ = listView3.SelectedItems[0];
+                originaltablename_ = listView3.SelectedItems[0].Text;
+                selecteditem_.BeginEdit();
+            }
+        }
+
         private void ListView3_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
-            MySqlCommand rename_table = new MySqlCommand("RENAME TABLE `" + e.Label + "`TO `" + e.Label + "`;", dbconnect);
+            MySqlCommand rename_table = new MySqlCommand("RENAME TABLE `" + treeView1.SelectedNode.Text + "`.`" + originaltablename_ + "` TO `" + treeView1.SelectedNode.Text + "`.`" + e.Label + "`;", dbconnect);
             try
             {
                 MySqlDataReader reader;
@@ -414,6 +426,8 @@ namespace instaSQL
 
                 }
                 reader.Close();
+                treeView1.SelectedNode.Nodes[originaltablename_].Text = e.Label;
+                treeView1.SelectedNode.Nodes[originaltablename_].Name = e.Label;
                 treeView1.Update();
                 listView1.Refresh();
                 treeView1.Refresh();
@@ -735,6 +749,22 @@ namespace instaSQL
                 listView1.Refresh();
                 reader_.Close();
             }
+            if (treeView1.SelectedNode.Parent!=null && treeView1.SelectedNode.Parent.Text=="SQL Server")
+            {
+                MySqlCommand droptable_ = dbconnect.CreateCommand();
+                droptable_.CommandText = "DROP TABLE `" + treeView1.SelectedNode.Text + "`.`" + listView3.SelectedItems[0].Text + "`;";
+                MySqlDataReader reader_;
+                reader_ = droptable_.ExecuteReader();
+                while (reader_.Read())
+                {
+
+                }
+                treeView1.SelectedNode.Nodes[listView3.SelectedItems[0].Text].Remove();
+                listView3.Items.Remove(listView3.SelectedItems[0]);
+                treeView1.Refresh();
+                listView3.Refresh();
+                reader_.Close();
+            }
         }
         
         private void Button7_Click(object sender, EventArgs e)
@@ -849,6 +879,7 @@ namespace instaSQL
 
                 }
                 reader_.Close();
+                dbconnect.Close();
                 button6_Click(sender, null);
             }
             catch(MySqlException err_)
