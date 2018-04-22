@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Created By Danil Korennykh
+//If anyone wishes to maintain this code, go ahead!
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
@@ -17,13 +19,20 @@ namespace instaSQL
         public Form1()
         {
             InitializeComponent();
+            //After the label is edited event
             listView1.AfterLabelEdit += ListView1_AfterLabelEdit;
             listView3.AfterLabelEdit += ListView3_AfterLabelEdit;
+
             button7.Click += Button7_Click;
             button5.Click += Button5_Click;
-
+            listView3.MouseDoubleClick += ListView3_MouseDoubleClick;
+            listView1.MouseDoubleClick += ListView1_MouseDoubleClick;
+            newrowbutton_.MouseClick += Newrowbutton__MouseClick;
         }
+
+        public Button newrowbutton_ = new Button();
         public string originaltablename_ = "";
+        public DataGridView datagridView1 = new DataGridView();
         public List<string> column_names_ = new List<string>();
         public List<string> column_datatype_ = new List<string>();
         public Label label26 = new Label();
@@ -331,9 +340,9 @@ namespace instaSQL
 
                 }
                 reader.Close();
-                TreeNodeCollection tnc = treeView1.Nodes[0].Nodes;
+                TreeNodeCollection tnc = treeView1.Nodes[0].Nodes; //List of databases
                 MySqlCommand listtables_ = dbconnect.CreateCommand();
-                for (int i = 0; i < tnc.Count; i++)
+                for (int i = 0; i < tnc.Count; i++) //Loop for each database
                 {
                     listtables_.CommandText = "SHOW tables FROM `" + tnc[i].Name + "`";
                     richTextBox1.Text = richTextBox1.Text + "\n" + listtables_.CommandText;
@@ -345,15 +354,18 @@ namespace instaSQL
                             for (int j = 0; j < tablereader.FieldCount; j++)
                             {
                                 row += tablereader.GetValue(j).ToString();
-                                treeView1.Nodes[0].Nodes[i].Nodes.Add(row, row);
+                                treeView1.Nodes[0].Nodes[i].Nodes.Add(row, row); //Add tables
                             }
                         }
+                        tablereader.Close();
                     }
+                    
+                    
                 }
+               
                 
                 panel2.Visible = false;
                 dbconnect.StateChange += Dbconnect_StateChange;
-                listView1.MouseDoubleClick += ListView1_MouseDoubleClick;
             }
         }
 
@@ -361,6 +373,7 @@ namespace instaSQL
         {
             if (e.Node.Text == "SQL Server")
             {
+                listView3.Visible = false;
                 panel7.Controls.Clear();
                 previouscombobox.Dispose();
                 previoustextbox.Dispose();
@@ -400,10 +413,45 @@ namespace instaSQL
                     listView3.Items.Add(e.Node.Nodes[i].Name);
                 }
                 listView3.LabelEdit = true;
-                listView3.MouseDoubleClick += ListView3_MouseDoubleClick;
+                
+            }
+            if(e.Node.Parent!=null && e.Node.Parent.Parent!=null && e.Node.Parent.Parent.Text=="SQL Server") //If selected item is a table
+            {
+                listView1.Visible = false;
+                listView3.Visible = false;
+                datagridView1.Visible = true;
+                datagridView1.Rows.Clear();
+                datagridView1.Columns.Clear();
+                datagridView1.Parent = panel3;
+                datagridView1.Size = new Size(panel3.Width - treeView1.Width-splitContainer1.Width,panel3.Height-panel8.Height);
+                datagridView1.Location = new Point(182, 41);
+                datagridView1.Font = new Font("Open Sans", 16);
+                MySqlCommand columns_ = dbconnect.CreateCommand();
+                MySqlDataReader reader_;
+                columns_.CommandText = "SELECT column_name from information_schema.columns where table_schema = '" + e.Node.Parent.Text + "' and table_name = '" + e.Node.Text + "'; ";
+                reader_ = columns_.ExecuteReader();
+                reader_.Read();
+                for(int i=0; i<reader_.FieldCount; i++)
+                {
+                    datagridView1.Columns.Add(reader_.GetValue(i).ToString(), reader_.GetValue(i).ToString());
+                }
+                reader_.Close();
+                MySqlCommand rowscount_ = dbconnect.CreateCommand();
+                MySqlDataReader rowcountreader_;
+                rowscount_.CommandText = "SELECT COUNT(*) FROM `" + e.Node.Parent.Text + "`.`" + e.Node.Text + "`;";
+                rowcountreader_ = rowscount_.ExecuteReader();
+                rowcountreader_.Read();
+                for(int i=0; i<rowcountreader_.GetInt32(0); i++)
+                {
+                    datagridView1.Rows.Add(rowcountreader_.GetValue(i).ToString(),rowcountreader_.GetValue(i).ToString());
+                }
+                rowcountreader_.Close();
             }
         }
-
+        private void Newrowbutton__MouseClick(object sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
         private void ListView3_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (listView3.SelectedItems.Count != 0)
@@ -842,45 +890,62 @@ namespace instaSQL
         }
         private void Button5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(columnTextBoxes.ToArray().Length.ToString());
             MySqlCommand Addtable_ = dbconnect.CreateCommand();
-            Addtable_.CommandText = "CREATE TABLE `" + treeView1.SelectedNode.Text + "`.`" + textBox3.Text + "` (";
-            for(int i=0; i<columnTextBoxes.ToArray().Length; i++)
+            if (columnTextBoxes[0].Text == "")
             {
-                if (i == columnTextBoxes.ToArray().Length - 1)
-                {
-                    Addtable_.CommandText = Addtable_.CommandText + "`" + columnTextBoxes[i].Text + "` " + columnComboBoxes[i].Text + ");";
-                }
-                else
-                {
-                    Addtable_.CommandText = Addtable_.CommandText + "`" +columnTextBoxes[i].Text + "` " + columnComboBoxes[i].Text + ",";
-                }
+                MessageBox.Show("Error. Please insert name and data type for column.");
             }
-            MySqlDataReader reader_;
-            reader_ = Addtable_.ExecuteReader();
-            while(reader_.Read())
+            else
             {
+                Addtable_.CommandText = "CREATE TABLE `" + treeView1.SelectedNode.Text + "`.`" + textBox3.Text + "` (";
+                for (int i = 0; i < columnTextBoxes.ToArray().Length; i++)
+                {
+                    if (i == columnTextBoxes.ToArray().Length - 1)
+                    {
+                        Addtable_.CommandText = Addtable_.CommandText + "`" + columnTextBoxes[i].Text + "` " + columnComboBoxes[i].Text + ");";
+                    }
+                    else
+                    {
+                        Addtable_.CommandText = Addtable_.CommandText + "`" + columnTextBoxes[i].Text + "` " + columnComboBoxes[i].Text + ",";
+                    }
+                }
+                MySqlDataReader reader_;
+                reader_ = Addtable_.ExecuteReader();
+                while (reader_.Read())
+                {
 
+                }
+                reader_.Close();
+                treeView1.SelectedNode.Nodes.Add(textBox3.Text);
+                columnTextBoxes.Clear();
+                columnLabels.Clear();
+                panel7.Dispose();
             }
-            reader_.Close();
-            treeView1.SelectedNode.Nodes.Add(textBox3.Text);
+            
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             try
             {
-                MySqlCommand customcommand_ = dbconnect.CreateCommand();
-                customcommand_.CommandText = textBox7.Text;
-                MySqlDataReader reader_;
-                reader_ = customcommand_.ExecuteReader();
-                while (reader_.Read())
+                if (textBox7.Text != "")
                 {
+                    MySqlCommand customcommand_ = dbconnect.CreateCommand();
+                    customcommand_.CommandText = textBox7.Text;
+                    MySqlDataReader reader_;
+                    reader_ = customcommand_.ExecuteReader();
+                    while (reader_.Read())
+                    {
 
+                    }
+                    reader_.Close();
+                    dbconnect.Close();
+                    button6_Click(sender, null);
                 }
-                reader_.Close();
-                dbconnect.Close();
-                button6_Click(sender, null);
+                else
+                {
+                    MessageBox.Show("Invalid Input!");
+                }
             }
             catch(MySqlException err_)
             {

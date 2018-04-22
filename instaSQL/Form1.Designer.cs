@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("SQL Server");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("SQL Server");
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -43,6 +43,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dbconnector = new System.ComponentModel.BackgroundWorker();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label16 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -71,19 +75,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.label23 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -227,6 +227,48 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(989, 566);
             this.panel3.TabIndex = 21;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.button8);
+            this.panel8.Controls.Add(this.textBox7);
+            this.panel8.Controls.Add(this.label23);
+            this.panel8.Location = new System.Drawing.Point(185, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(602, 42);
+            this.panel8.TabIndex = 6;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.White;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(487, 6);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(113, 31);
+            this.button8.TabIndex = 2;
+            this.button8.Text = "Run Query";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // textBox7
+            // 
+            this.textBox7.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(130, 7);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(354, 29);
+            this.textBox7.TabIndex = 1;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(10, 10);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(119, 22);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "Custom Query";
             // 
             // splitContainer1
             // 
@@ -502,10 +544,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode17.Name = "Node0";
-            treeNode17.Text = "SQL Server";
+            treeNode7.Name = "Node0";
+            treeNode7.Text = "SQL Server";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode17});
+            treeNode7});
             this.treeView1.Size = new System.Drawing.Size(184, 535);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -565,48 +607,6 @@
             this.label10.TabIndex = 5;
             this.label10.Text = "Welcome";
             // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.button8);
-            this.panel8.Controls.Add(this.textBox7);
-            this.panel8.Controls.Add(this.label23);
-            this.panel8.Location = new System.Drawing.Point(185, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(602, 42);
-            this.panel8.TabIndex = 6;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(10, 10);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(119, 22);
-            this.label23.TabIndex = 0;
-            this.label23.Text = "Custom Query";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(130, 7);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(354, 29);
-            this.textBox7.TabIndex = 1;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(487, 6);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(113, 31);
-            this.button8.TabIndex = 2;
-            this.button8.Text = "Run Query";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -623,6 +623,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -632,8 +634,6 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
